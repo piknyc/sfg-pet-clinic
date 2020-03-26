@@ -5,9 +5,6 @@ import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.VetService;
-import guru.springframework.sfgpetclinic.services.impl.map.OwnerServiceMap;
-import guru.springframework.sfgpetclinic.services.impl.map.PetServiceMap;
-import guru.springframework.sfgpetclinic.services.impl.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +14,12 @@ public class DataInitializer implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetService petService;
 
-	public DataInitializer() {
-		ownerService = new OwnerServiceMap();
-		vetService = new VetServiceMap();
-		petService = new PetServiceMap();
+
+	//@Autowired by default
+	public DataInitializer(OwnerService ownerService, VetService vetService, PetService petService) {
+		this.ownerService = ownerService;
+		this.vetService = vetService;
+		this.petService = petService;
 	}
 
 	@Override
