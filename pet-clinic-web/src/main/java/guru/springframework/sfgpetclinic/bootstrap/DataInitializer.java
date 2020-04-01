@@ -90,6 +90,7 @@ public class DataInitializer implements CommandLineRunner {
 		fionasCat.setOwner(owner2);
 		fionasCat.setBirthDate(LocalDate.now());
 		fionasCat.setPetType(savedCatPetType);
+		petService.save(fionasCat);
 		owner2.getPets().add(fionasCat);
 		ownerService.save(owner2);
 
